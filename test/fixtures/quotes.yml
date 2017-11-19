@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  project: one
+  quote_details: MyText
+  total: 
+  timeframe: MyString
+  start_date: MyString
+
+two:
+  user: two
+  project: two
+  quote_details: MyText
+  total: 
+  timeframe: MyString
+  start_date: MyString

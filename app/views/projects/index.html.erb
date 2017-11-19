@@ -1,0 +1,21 @@
+<h1>Projects <%= link_to "Create New", new_project_path %></h1>
+<% if @projects.exists? %>
+	<table>
+		<tr>
+			<th>Project Name</th>
+			<th>Budget</th>
+		</tr>
+
+		<% @projects.each do |project| %>
+			<tr>
+				<td><%= project.project_title %></td>
+				<td><%= project.budget %></td>
+				<td>
+					<%= link_to 'Edit', edit_project_path(project.id) %> | <%= link_to 'Delete', project_path(project), method: :delete, data: {confirm: 'Are you sure?'} %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+<% else %>
+  <p>There are no categories</p>
+<% end %>

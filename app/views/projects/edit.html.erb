@@ -1,0 +1,39 @@
+<h1>Projects#edit</h1>
+<p>Find me in app/views/projects/edit.html.erb</p>
+
+<h2>Edit Project</h2>
+
+<%= form_for @project, url: projects_path do |f| %>
+	<!-- Check for errors -->
+	<% if @project.errors.any? %>
+		<% @project.errors.full_messages.each do |msg| %>
+			<!-- Show errors -->
+			<div><%= msg %></div>
+		<% end %>
+	<% end %>
+
+	<div>
+		<%= f.label "Project Title" %>
+		<%= f.text_field :project_title, autofocus: true %>
+	</div>
+
+	<div>
+		<%= f.label "Description" %>
+		<%= f.text_area :project_desc, autofocus: true %>
+	</div>
+
+	<div>
+		<%= f.label "Address" %>
+		<%= f.text_field :address, autofocus: true %>
+	</div>
+
+	<div>
+		<%= f.label "Budget" %>
+		<%= f.number_field  :budget, autofocus: true %>
+	</div>
+
+	<br>
+	<%= f.submit "Submit"%>
+	<%=link_to "Cancel", root_path %>
+<% end %>
+

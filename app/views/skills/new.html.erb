@@ -1,0 +1,23 @@
+<h1>Skills#new</h1>
+<p>Find me in app/views/skills/new.html.erb</p>
+
+<h2>Add New Skill Category</h2>
+
+<%= form_for @skill, url: skills_path do |f| %>
+	<!-- Check for errors -->
+	<% if @skill.errors.any? %>
+		<% @skill.errors.full_messages.each do |msg| %>
+			<!-- Show errors -->
+			<div><%= msg %></div>
+		<% end %>
+	<% end %>
+
+	<div>
+		<%= f.label "Add New Skill Category" %>
+		<%= f.text_field :skill_name %>
+	</div>
+	<br>
+	<%= f.submit "Submit"%>
+	<%=link_to "Cancel", root_path %>
+<% end %>
+
