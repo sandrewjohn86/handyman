@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  get 'directory_lines/new'
+
+  get 'directory_lines/create'
+
+  get 'directory_lines/update'
+
+  get 'directory_lines/edit'
+
+  get 'directory_lines/destroy'
+
+  get 'directory_lines/index'
+
+  get 'directory_lines/show'
+
   get 'quotes/new'
 
   get 'quotes/create'
@@ -83,10 +97,14 @@ Rails.application.routes.draw do
 	
 	root to: "welcome#index"
 
-  resources :skills, :projects
+  resources :skills, :projects, :directories
 
   resources :projects do
     resources :quotes
+  end
+
+  resources :directories do
+    resources :directory_lines
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
