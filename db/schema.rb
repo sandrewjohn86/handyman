@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171119022038) do
+ActiveRecord::Schema.define(version: 20171120002049) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "title"
@@ -40,9 +40,12 @@ ActiveRecord::Schema.define(version: 20171119022038) do
   end
 
   create_table "directories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "client_id"
+    t.string   "directory_title"
+    t.string   "directory_desc"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["client_id"], name: "index_directories_on_client_id", using: :btree
   end
 
   create_table "projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -99,6 +102,7 @@ ActiveRecord::Schema.define(version: 20171119022038) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "directories", "clients"
   add_foreign_key "quotes", "projects"
   add_foreign_key "quotes", "users"
 end

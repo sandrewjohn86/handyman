@@ -11,13 +11,13 @@ class DirectoriesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get edit" do
-    get directories_edit_url
+  test "should get update" do
+    get directories_update_url
     assert_response :success
   end
 
-  test "should get update" do
-    get directories_update_url
+  test "should get edit" do
+    get directories_edit_url
     assert_response :success
   end
 

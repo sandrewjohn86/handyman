@@ -45,20 +45,6 @@ Rails.application.routes.draw do
 
   get 'skills/show'
 
-  get 'projects/new'
-
-  get 'projects/create'
-
-  get 'projects/edit'
-
-  get 'projects/update'
-
-  get 'projects/destroy'
-
-  get 'projects/index'
-
-  get 'projects/show'
-
   devise_for :users, controllers: {
     #confirmations: 'users/confirmations',
     passwords: 'users/passwords',
@@ -97,7 +83,11 @@ Rails.application.routes.draw do
 	
 	root to: "welcome#index"
 
-  resources :skills, :projects, :quotes
+  resources :skills, :projects
+
+  resources :projects do
+    resources :quotes
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

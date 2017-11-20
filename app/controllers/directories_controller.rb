@@ -5,10 +5,10 @@ class DirectoriesController < ApplicationController
   def create
   end
 
-  def edit
+  def update
   end
 
-  def update
+  def edit
   end
 
   def destroy

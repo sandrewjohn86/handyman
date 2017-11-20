@@ -1,0 +1,35 @@
+<h2>Create a Quote</h2>
+
+<%= form_for ([@project, @project.quotes.build]) do |f| %>
+	<!-- Check for errors -->
+	<% if @project.errors.any? %>
+		<% @project.errors.full_messages.each do |msg| %>
+			<!-- Show errors -->
+			<div><%= msg %></div>
+		<% end %>
+	<% end %>
+
+	<div>
+		<%= f.label "Quote Details" %>
+		<%= f.text_area :quote_details, autofocus: true %>
+	</div>
+
+	<div>
+		<%= f.label :total %>
+		<%= f.number_field :total, autofocus: true %>
+	</div>
+
+	<div>
+		<%= f.label :timeframe %>
+		<%= f.text_field :timeframe, autofocus: true %>
+	</div>
+
+	<div>
+		<%= f.label "Start Date" %>
+		<%= f.number_field  :start_date, autofocus: true %>
+	</div>
+
+	<br>
+	<%= f.submit "Submit"%>
+	<%=link_to "Cancel", root_path %>
+<% end %>

@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
   def new
     @page_title = 'Create Project'
     @project = current_client.projects.build
+    @clients = Client.all
   end
 
   def create
@@ -15,6 +16,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    
   end
 
   def update
@@ -28,6 +30,9 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @project = Project.find(params[:id])
+    @quote = Quote.new
+    @quotes = Quote.all
   end
 
   private
