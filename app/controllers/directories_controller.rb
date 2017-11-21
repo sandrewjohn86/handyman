@@ -7,7 +7,8 @@ class DirectoriesController < ApplicationController
 
   def create
     @directory = current_client.directories.build(directory_params)
-    if @directory.save 'Directory created'
+    if @directory.save 
+      flash[:notice] = 'Directory created'
       redirect_to directories_path
     else
       render 'new'

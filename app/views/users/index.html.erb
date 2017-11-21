@@ -14,7 +14,15 @@
 				<td><%= user.fname %></td>
 				<td><%= user.lname %></td>
 				<td>
-				<%= link_to 'Edit', edit_user_registration_path(user.id) %>
+					<%= link_to 'Edit', edit_user_registration_path(user.id) %>
+					<div class = "dropdown">
+						<button onclick="myFunction()" class="dropbtn">Add to directory</button>
+						<div id="myDropdown" class="dropdown-content">
+							<% @directories.each do |directory| %>
+								<%= link_to directory.directory_title , projects_path %>
+							<% end %>
+						</div>
+					</div>
 				</td>
 			</tr>
 		<% end %>
@@ -22,3 +30,22 @@
 <% else %>
   <p>There are no categories</p>
 <% end %>
+
+<script type="text/javascript">
+	function myFunction(){
+		document.getElementById("myDropdown").classList.toggle("show");
+	}
+
+	window.onclick = function(event){
+		if (!event.target.matches('.dropbtn')){
+			var dropdowns = document.getElementsByClassName("dropdown-content");
+			var i;
+			for(i = 0; i < dropdowns.length; i++){
+				var openDropdown = dropdowns[i];
+				if(openDropdown.classList.contains('show')){
+					openDropdown.classList.remove('show');
+				}
+			}
+		}
+	}
+</script>

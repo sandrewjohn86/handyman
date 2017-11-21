@@ -1,2 +1,10 @@
 <h1>Directories#show</h1>
 <p>Find me in app/views/directories/show.html.erb</p>
+
+<div>
+	<h2><%= @directory.directory_title %></h2>
+	<p><%= @directory.directory_desc %></p>
+</div>
+
+<%= render @directory.directory_lines %>
+<%=link_to "Add professionals", users_path %>

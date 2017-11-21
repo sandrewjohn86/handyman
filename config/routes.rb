@@ -69,8 +69,8 @@ Rails.application.routes.draw do
 
   ## custom routes for users
   as :user do
-    get 'login' => 'users/sessions#new', as: :new_user_session
-    post 'login' => 'users/sessions#create', as: :user_session
+    get 'users/login' => 'users/sessions#new', as: :new_user_session
+    post 'users/login' => 'users/sessions#create', as: :user_session
     delete 'logout' => 'users/sessions#destroy', as: :destroy_user_session
     get 'register' => 'users/registrations#new'
   end
@@ -87,8 +87,8 @@ Rails.application.routes.draw do
 
   ## custom routes for clients
   as :client do
-    get 'login' => 'clients/sessions#new', as: :new_client_session
-    post 'login' => 'clients/sessions#create', as: :client_session
+    get 'clients/login' => 'clients/sessions#new', as: :new_client_session
+    post 'clients/login' => 'clients/sessions#create', as: :client_session
     delete 'logout' => 'clients/sessions#destroy', as: :destroy_client_session
     get 'register' => 'clients/registrations#new'
   end

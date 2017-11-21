@@ -1,35 +1,25 @@
 <h1>Directories#new</h1>
 <p>Find me in app/views/directories/new.html.erb</p>
 
-<h2>Create New Project</h2>
+<h2>Create New Directory</h2>
 
-<%= form_for @project, url: projects_path do |f| %>
+<%= form_for @directory, url: directories_path do |f| %>
 	<!-- Check for errors -->
-	<% if @project.errors.any? %>
-		<% @project.errors.full_messages.each do |msg| %>
+	<% if @directory.errors.any? %>
+		<% @directory.errors.full_messages.each do |msg| %>
 			<!-- Show errors -->
 			<div><%= msg %></div>
 		<% end %>
 	<% end %>
 
 	<div>
-		<%= f.label "Project Title" %>
-		<%= f.text_field :project_title, autofocus: true %>
+		<%= f.label "Directory Title" %>
+		<%= f.text_field :directory_title, autofocus: true %>
 	</div>
 
 	<div>
 		<%= f.label "Description" %>
-		<%= f.text_area :project_desc, autofocus: true %>
-	</div>
-
-	<div>
-		<%= f.label "Address" %>
-		<%= f.text_field :address, autofocus: true %>
-	</div>
-
-	<div>
-		<%= f.label "Budget" %>
-		<%= f.number_field  :budget, autofocus: true %>
+		<%= f.text_area :directory_desc, autofocus: true %>
 	</div>
 
 	<br>
