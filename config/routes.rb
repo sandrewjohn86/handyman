@@ -1,17 +1,4 @@
 Rails.application.routes.draw do
-  get 'directory_lines/new'
-
-  get 'directory_lines/create'
-
-  get 'directory_lines/update'
-
-  get 'directory_lines/edit'
-
-  get 'directory_lines/destroy'
-
-  get 'directory_lines/index'
-
-  get 'directory_lines/show'
 
   get 'quotes/new'
 
@@ -75,7 +62,13 @@ Rails.application.routes.draw do
     get 'register' => 'users/registrations#new'
   end
 
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show] 
+
+  resources :users do
+    resources :directories do
+      resources :directory_lines, :only => [:new, :create]
+    end
+  end
 
   devise_for :clients, controllers: {
     #confirmations: 'clients/confirmations',
@@ -104,8 +97,10 @@ Rails.application.routes.draw do
   end
 
   resources :directories do
-    resources :directory_lines
+    resources :directory_lines, :only => [:index]
   end
+
+  # resources :directory_lines, :only => [:new, :create]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -7,45 +7,31 @@
 			<th>First Name</th>
 			<th>Last Name</th>
 			<th>Actions</th>
+			<th>Directory action</th>
 		</tr>
-
+	
 		<% @users.each do |user| %>
-			<tr>
+		<tr>
+			
 				<td><%= user.fname %></td>
 				<td><%= user.lname %></td>
+				<td><%= link_to 'Edit', edit_user_registration_path(user.id) %></td>
+
 				<td>
-					<%= link_to 'Edit', edit_user_registration_path(user.id) %>
+				
 					<div class = "dropdown">
-						<button onclick="myFunction()" class="dropbtn">Add to directory</button>
-						<div id="myDropdown" class="dropdown-content">
+						<button class="dropbtn">Add to directory</button>
+						<div class="dropdown-content">
 							<% @directories.each do |directory| %>
-								<%= link_to directory.directory_title , projects_path %>
+								<%= button_to directory.directory_title,user_directory_directory_lines_path(directory_id: directory.id, user_id: user.id), remote: :true %>
 							<% end %>
-						</div>
+						</div>	
 					</div>
 				</td>
 			</tr>
-		<% end %>
+		<% end %>		
 	</table>
 <% else %>
   <p>There are no categories</p>
 <% end %>
 
-<script type="text/javascript">
-	function myFunction(){
-		document.getElementById("myDropdown").classList.toggle("show");
-	}
-
-	window.onclick = function(event){
-		if (!event.target.matches('.dropbtn')){
-			var dropdowns = document.getElementsByClassName("dropdown-content");
-			var i;
-			for(i = 0; i < dropdowns.length; i++){
-				var openDropdown = dropdowns[i];
-				if(openDropdown.classList.contains('show')){
-					openDropdown.classList.remove('show');
-				}
-			}
-		}
-	}
-</script>

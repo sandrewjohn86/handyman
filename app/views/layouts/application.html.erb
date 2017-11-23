@@ -8,18 +8,17 @@
 
     <style type="text/css">
 
-      .dropbtn{
+      .dropdown{
+        overflow: hidden;
+      }
+
+      .dropdown .dropbtn{
         background-color: #4caf50;
         color: white;
         padding: 5px 10px;
         font-size: 16px;
         border: none;
         cursor: pointer;
-      }
-
-      .dropdown{
-        position: relative;
-        display: inline-block;
       }
 
 
@@ -29,16 +28,7 @@
         min-width: 160px;
         background-color: #f9f9f9;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        overflow: auto;
         z-index: 1;
-      }
-
-      .dropdown a:hover{
-        background-color: #f1f1f1;
-      }
-
-      .dropbtn:hover, .dropbtn:focus{
-        background-color: #3e8e41;
       }
 
       .dropdown-content a{
@@ -46,11 +36,17 @@
         padding: 5px 10px;
         text-decoration: none;
         color: black;
-      }
-
-      .show{
         display: block;
       }
+
+      .dropdown-content a:hover{
+        background-color: #ddd;
+      }
+
+      .dropdown:hover .dropdown-content{
+        display: block;
+      }
+      
     </style>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>

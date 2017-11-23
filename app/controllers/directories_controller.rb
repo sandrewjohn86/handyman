@@ -3,6 +3,7 @@ class DirectoriesController < ApplicationController
     @page_title = 'Directories'
     @directory = current_client.directories.build
     @clients = Client.all
+    # @user = User.find(params[:id])
   end
 
   def create
