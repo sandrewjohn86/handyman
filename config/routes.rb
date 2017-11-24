@@ -1,50 +1,66 @@
 Rails.application.routes.draw do
 
-  get 'quotes/new'
+  namespace :clients do
+    get 'dashboard/index'
+  end
 
-  get 'quotes/create'
+  # get 'index/show'
 
-  get 'quotes/update'
+  # get 'index/edit'
 
-  get 'quotes/edit'
+  # get 'index/update'
 
-  get 'quotes/destroy'
+  # get 'index/destroy'
 
-  get 'quotes/index'
+  # get 'index/create'
 
-  get 'quotes/show'
+  # get 'index/new'
 
-  get 'users/index'
+  # get 'quotes/new'
 
-  get 'users/show'
+  # get 'quotes/create'
 
-  get 'directories/new'
+  # get 'quotes/update'
 
-  get 'directories/create'
+  # get 'quotes/edit'
 
-  get 'directories/edit'
+  # get 'quotes/destroy'
 
-  get 'directories/update'
+  # get 'quotes/index'
 
-  get 'directories/destroy'
+  # get 'quotes/show'
 
-  get 'directories/index'
+  # get 'users/index'
 
-  get 'directories/show'
+  # get 'users/show'
 
-  get 'skills/new'
+  # get 'directories/new'
 
-  get 'skills/create'
+  # get 'directories/create'
 
-  get 'skills/edit'
+  # get 'directories/edit'
 
-  get 'skills/update'
+  # get 'directories/update'
 
-  get 'skills/destroy'
+  # get 'directories/destroy'
 
-  get 'skills/index'
+  # get 'directories/index'
 
-  get 'skills/show'
+  # get 'directories/show'
+
+  # get 'skills/new'
+
+  # get 'skills/create'
+
+  # get 'skills/edit'
+
+  # get 'skills/update'
+
+  # get 'skills/destroy'
+
+  # get 'skills/index'
+
+  # get 'skills/show'
 
   devise_for :users, controllers: {
     #confirmations: 'users/confirmations',
@@ -63,6 +79,8 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index, :show] 
+
+  
 
   resources :users do
     resources :directories do
@@ -86,19 +104,53 @@ Rails.application.routes.draw do
     get 'register' => 'clients/registrations#new'
   end
 
+  # resources :clients
+
+  # resources :clients do
+  #    resources :projects, :only => [:new, :create, :index, :edit, :update, :destroy]
+  # end
+
+  namespace :clients do
+    resources :projects do
+      resources :quotes, :only => [:index, :show, :destroy]
+    end
+  end
+
+  # namespace :clients do
+  #   resources :directories
+  # end
+
+  namespace :clients do
+    resources :directories do
+      resources :directory_lines, :only => [:index, :create, :destroy, :update]
+    end
+  end
+
+  # resources :clients, :only => [:index]
+
+  namespace :clients do
+    resources :dashboard, :only => [:index]
+  end
+
   get 'welcome/index'
 	
+  authenticated :client do
+    root :to => "clients/dashboard#index"
+  end
+
 	root to: "welcome#index"
 
-  resources :skills, :projects, :directories
+  resources :skills
 
-  resources :projects do
-    resources :quotes
-  end
+  resources :projects, :only => [:index, :show]
 
-  resources :directories do
-    resources :directory_lines, :only => [:index]
-  end
+  # resources :projects do
+  #   resources :quotes
+  # end
+
+  # resources :directories do
+  #   resources :directory_lines, :only => [:index]
+  # end
 
   # resources :directory_lines, :only => [:new, :create]
 

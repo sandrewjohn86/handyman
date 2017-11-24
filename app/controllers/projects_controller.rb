@@ -1,32 +1,13 @@
 class ProjectsController < ApplicationController
-  def new
-    @page_title = 'Create Project'
-    @project = current_client.projects.build
-    @clients = Client.all
-  end
+  # before_filter :require_permission, only: :edit
+  before_filter :authenticate_client!
+  # before_filter :authenticate_user!
 
-  def create
-    @project = current_client.projects.build(project_params)
-    if @project.save
-      flash[:notice] = 'Project created'
-      redirect_to projects_path
-    else
-      render 'new'
-    end
-  end
 
-  def edit
-    
-  end
-
-  def update
-  end
-
-  def destroy
-  end
 
   def index
     @projects = Project.all
+    
   end
 
   def show
@@ -39,4 +20,11 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:project_title, :project_desc, :address, :budget, :client_id)
   end
+
+  #  def require_permission
+  #   if current_client != Project.find(params[:id]).client
+  #     flash[:notice] = "You do not have permission to edit this project"
+  #     redirect_to projects_path
+  #   end
+  # end
 end

@@ -1,0 +1,17 @@
+<h1>Clients#index</h1>
+<p>Find me in app/views/clients/index.html.erb</p>
+	<table >
+		<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Actions</th>
+		</tr>
+		<tr>
+			
+			<td><%= @client.fname %></td>
+			<td><%= @client.lname %></td>
+			<td><%= link_to 'Edit', edit_client_registration_path(client.id) %> | <%= link_to 'View Directory', clients_directories_path(client.id) %></td>
+				
+		</tr>
+	</table>
+

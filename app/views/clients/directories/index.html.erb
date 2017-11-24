@@ -1,0 +1,24 @@
+<h1>Directories#index</h1>
+<p>Find me in app/views/directories/index.html.erb</p>
+
+<h1>Directories <%= link_to "Create New", new_clients_directory_path %></h1>
+<% if @directories.exists? %>
+	<table>
+		<tr>
+			<th>Directory Title</th>
+			<th>Directory Description</th>
+		</tr>
+
+		<% @directories.each do |directory| %>
+			<tr>
+				<td><%= directory.directory_title %></td>
+				<td><%= directory.directory_desc %></td>
+				<td>
+					<%= link_to 'Edit', edit_clients_directory_path(directory.id) %> | <%= link_to 'Delete', clients_directory_path(directory), method: :delete, data: {confirm: 'Are you sure?'} %> | <%= link_to 'Show', clients_directory_path(directory.id) %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+<% else %>
+  <p>There are no categories</p>
+<% end %>

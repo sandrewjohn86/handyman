@@ -1,3 +1,4 @@
+<h1>Projects <%= link_to "Create New", new_clients_project_path %></h1>
 <% if @projects.exists? %>
 	<table>
 		<tr>
@@ -10,7 +11,7 @@
 				<td><%= project.project_title %></td>
 				<td><%= project.budget %></td>
 				<td>
-					<%= link_to 'Show',project_path(project.id) %>
+					<%= link_to 'Edit', edit_clients_project_path(project.id) %> | <%= link_to 'Delete', clients_project_path(project), method: :delete, data: {confirm: 'Are you sure?'} %> | <%= link_to 'Show',clients_project_path(project.id) %>
 				</td>
 			</tr>
 		<% end %>
