@@ -1,0 +1,31 @@
+<h1>Quotes</h1>
+
+<% if @quotes.exists? %>
+	<table>
+		<tr>
+			<th>Quote Details</th>
+			<th>Total</th>
+		</tr>
+
+		<% @quotes.each do |quote| %>
+			<% if @project.id == quote.project.id %>
+				<div>
+					<h2><%= quote.project.project_title %></h2>
+					<p><%= quote.project.project_desc %></p>
+					<p><%= quote.project.address %></p>
+					<h3><%= quote.project.budget %></h3>
+				</div>
+				
+				<tr>
+					<td><%= quote.quote_details %></td>
+					<td><%= quote.total %></td>
+					<td>
+					<%= link_to 'Edit', edit_users_project_quote_path(quote.id, quote.project.id) %> | <%= link_to 'Delete', users_project_quote_path(quote.id, quote.project.id), method: :delete, data: {confirm: 'Are you sure?'} %> | <%= link_to 'Show',users_project_quote_path(quote.id, quote.project.id) %>
+					</td>
+				</tr>
+			<% end %>
+		<% end %>
+	</table>
+<% else %>
+  <p>you have no Quotes for review. <%= link_to 'Browse Projects',projects_path %></p>
+<% end %>

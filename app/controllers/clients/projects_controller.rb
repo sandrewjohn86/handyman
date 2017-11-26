@@ -1,5 +1,5 @@
 class Clients::ProjectsController < Clients::ApplicationController
-  before_filter :require_permission, only: [:edit, :show, :update, :destroy]
+  before_filter :require_permission, only: [:edit, :show, :update, :destroy, :update, :new]
   before_filter :authenticate_client!
   # before_filter :authenticate_user!
 
@@ -7,7 +7,6 @@ class Clients::ProjectsController < Clients::ApplicationController
     @page_title = 'Create Project'
     @project = current_client.projects.build
     @client = Client.find(params[:client_id])
-
   end
 
   def create

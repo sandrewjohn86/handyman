@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Handyman</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'users/application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     <%= javascript_include_tag 'users/application', 'data-turbolinks-track' => true %>
+
+    <style type="text/css">
+
+      .dropdown{
+        overflow: hidden;
+      }
+
+      .dropdown .dropbtn{
+        background-color: #4caf50;
+        color: white;
+        padding: 5px 10px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+      }
+
+
+      .dropdown-content{
+        display: none;
+        position: absolute;
+        min-width: 160px;
+        background-color: #f9f9f9;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+
+      .dropdown-content a{
+        display: block;
+        padding: 5px 10px;
+        text-decoration: none;
+        color: black;
+        display: block;
+      }
+
+      .dropdown-content a:hover{
+        background-color: #ddd;
+      }
+
+      .dropdown:hover .dropdown-content{
+        display: block;
+      }
+      
+    </style>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  	<p class="notice"><%= notice %></p>
+     <p class="alert"><%= alert %></p>
+
+    <%= yield %>
+  </body>
+</html>

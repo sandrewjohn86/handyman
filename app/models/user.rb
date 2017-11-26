@@ -1,7 +1,9 @@
 class User < ApplicationRecord
 	belongs_to :skill
 	has_many :quotes
+	
 	has_many :projects, through: :quotes
+	has_many :projects_with_quotes, through: :quotes, source: :project
 
 	has_many :directory_lines
 	has_many :directories, through: :directory_lines

@@ -11,7 +11,7 @@
 			
 			<td><%= @client.fname %></td>
 			<td><%= @client.lname %></td>
-			<td> <%= link_to 'View Directory', clients_directories_path(@client.id) %></td>
+			<td> <%= link_to 'View Directory', clients_directories_path(@client.id) %> | <%= link_to('Logout' , destroy_client_session_path, method: :delete) %></td>
 				
 		</tr>
 	</table>

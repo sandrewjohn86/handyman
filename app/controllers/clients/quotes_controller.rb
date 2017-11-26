@@ -1,6 +1,6 @@
 class Clients::QuotesController < Clients::ApplicationController
-  before_filter :authenticate_user!
-  before_filter :authenticate_client!
+  # before_filter :authenticate_user!
+  # before_filter :authenticate_client!
 
   
   def new

@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  devise_for :admins
+  namespace :users do
+    get 'dashboard/index'
+  end
+
   namespace :clients do
     get 'dashboard/index'
   end
@@ -80,13 +85,23 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show] 
 
+  namespace :users do
+    resources :projects do
+      resources :quotes, :only => [:new, :create, :index, :show, :destroy, :edit, :update]
+    end
+  end
   
-
-  resources :users do
+  namespace :users do
     resources :directories do
       resources :directory_lines, :only => [:new, :create]
     end
   end
+
+  # resources :users do
+  #   resources :directories do
+  #     resources :directory_lines, :only => [:new, :create]
+  #   end
+  # end
 
   devise_for :clients, controllers: {
     #confirmations: 'clients/confirmations',
@@ -136,6 +151,10 @@ Rails.application.routes.draw do
 	
   authenticated :client do
     root :to => "clients/dashboard#index"
+  end
+
+  authenticated :user do
+    root :to => "users/dashboard#index"
   end
 
 	root to: "welcome#index"

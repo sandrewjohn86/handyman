@@ -1,27 +1,27 @@
-class ProjectsController < ApplicationController
+class Users::ProjectsController < Users::ApplicationController
   # before_filter :require_permission, only: :edit
   # before_filter :authenticate_client!
   before_filter :authenticate_user!
 
-
-
   def index
-    @projects = Project.all
+    @user = current_user
+    @projects = @user.projects_with_quotes()
+    # @project = Project.find(params[:id])
+    @quote = Quote.find(params[:id])
+    @quotes = Quote.all
+
   end
 
   def show
     @project = Project.find(params[:id])
     @quote = Quote.new
-    # @quotes = Quote.all
-    # @quote = @project.quotes.includes(:user)
-    # @quote = current_user.quotes
-    
+    @quotes = Quote.all
   end
 
-  private
-  def project_params
-    params.require(:project).permit(:project_title, :project_desc, :address, :budget, :client_id)
-  end
+  # private
+  # def project_params
+  #   params.require(:project).permit(:project_title, :project_desc, :address, :budget, :client_id)
+  # end
 
   #  def require_permission
   #   if current_client != Project.find(params[:id]).client
