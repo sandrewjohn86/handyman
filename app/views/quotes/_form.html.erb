@@ -9,27 +9,81 @@
 		<% end %>
 	<% end %>
 
-	<div>
-		<%= f.label "Quote Details" %>
-		<%= f.text_area :quote_details, autofocus: true %>
+	<div class="form-row">
+        <div class="form-group col-md-12">
+			<%= f.label "Quote Details" %>
+			<%= f.text_area :quote_details, autofocus: true, class: "form-control ckeditor" %>
+		</div>
 	</div>
 
-	<div>
-		<%= f.label :total %>
-		<%= f.number_field :total, autofocus: true %>
-	</div>
+	<div class="form-row">
+        <div class="form-group col-md-4">
+			<%= f.label :total %>
+			<%= f.number_field :total, autofocus: true, class: "form-control"  %>
+		</div>
 
-	<div>
-		<%= f.label :timeframe %>
-		<%= f.text_field :timeframe, autofocus: true %>
-	</div>
 
-	<div>
-		<%= f.label "Start Date" %>
-		<%= f.number_field  :start_date, autofocus: true %>
+
+        <div class="form-group col-md-4">
+			<%= f.label :timeframe %>
+			<%= f.text_field :timeframe, autofocus: true, class: "form-control"  %>
+		</div>
+
+
+
+        <div class="form-group col-md-4">
+			<%= f.label "Start Date" %>
+			<%= f.text_field  :start_date, autofocus: true, class: "form-control", "data-provide" => "datepicker"  %>
+		</div>
 	</div>
 
 	<br>
 	<%= f.submit "Submit"%>
 	<%=link_to "Cancel", root_path %>
 <% end %>
+
+<!-- <form>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Email</label>
+                          <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="inputPassword4">Password</label>
+                          <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="inputAddress">Address</label>
+                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                      </div>
+                      <div class="form-group">
+                        <label for="inputAddress2">Address 2</label>
+                        <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="inputCity">City</label>
+                          <input type="text" class="form-control" id="inputCity">
+                        </div>
+                        <div class="form-group col-md-4">
+                          <label for="inputState">State</label>
+                          <select id="inputState" class="form-control">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <label for="inputZip">Zip</label>
+                          <input type="text" class="form-control" id="inputZip">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox"> Check me out
+                          </label>
+                        </div>
+                      </div>
+                      <button type="submit" class="btn btn-primary">Sign in</button>
+                      </form> -->

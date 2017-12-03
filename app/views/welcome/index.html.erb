@@ -1,4 +1,147 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+  <header>
+    <div class="row">
+      <%= image_tag("hero.png", alt: "Hero Image") %>
+      <!-- <img src="img/hero.png"/> -->
+      <div class="hero-heading">
+        <h1>Find The <span>Man</span> For The Job</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tincidunt consectetur ultrices. In tincidunt,</p>
+        <div class="action-button">
+          <button><%= link_to "Search Pros", users_path, class: "dropdown-item" %></button>
+          <button><%= link_to "Create an Account", signup_path, class: "dropdown-item" %></button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section class="quick-search" id="quick-search">
+    <h3>Quick Search</h3>
+    <div class="container">
+      <div class="row row-1">
+        <div class="col-md-3">
+          <div class="inner-container">
+            <a href="#">Capenters</a>
+          </div>
+          <!-- <div class="overlay-content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+          </div> -->
+          <%= link_to (users_path) do %>
+          <div class="overlay-container">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+          </div> 
+          <% end %>
+        </div>
 
-<%= link_to('Logout' , destroy_user_session_path, method: :delete) %>
+        <div class="col-md-3">
+          <div class="inner-container">
+            <a href="professionals.html">Electricians</a>
+          </div>
+          <div class="overlay-container"></div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="inner-container">
+            <a href="professionals.html">Plumbers</a>
+          </div>
+          <div class="overlay-container"></div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="inner-container">
+            <a href="professionals.html">painters</a>
+          </div>
+          <div class="overlay-container"></div>
+        </div>
+      </div>
+
+      <div class="row row-1">
+        <div class="col-md-3">
+          <div class="inner-container">
+            <a href="professionals.html">Tilers</a>
+          </div>
+          <div class="overlay-container"></div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="inner-container">
+            <a href="professionals.html">Drafters</a>
+          </div>
+          <div class="overlay-container"></div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="inner-container">
+            <a href="professionals.html">A/C Technicians</a>
+          </div>
+          <div class="overlay-container"></div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="inner-container">
+            <a href="professionals.html">Welders</a>
+          </div>
+          <div class="overlay-container"></div>
+        </div>
+      </div>
+    </div>
+    <button><%= link_to "Search all Category", users_path %></button>
+  </section>
+
+  <section id="how-it-work">
+  <div id="text-description">
+      <h3>How it Works.</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tincidunt consectetur ultrices. In tincidunt</p>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 item-1">
+            <i class="fa fa-address-card fa-3x" aria-hidden="true"></i>
+            <h4>Search Hundreds of Skill Workers</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tincidunt consectetur ultrices. In tincidunt</p>
+          </div>
+
+          <div class="col-md-3 item-2">
+            <i class="fa fa-phone fa-3x" aria-hidden="true"></i>
+            <h4>Contact Real Professionals</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tincidunt consectetur ultrices. In tincidunt</p>
+          </div>
+
+          <div class="col-md-3 item-3">
+            <i class="fa fa-file-text fa-3x" aria-hidden="true"></i>
+            <h4>Post a Project</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tincidunt consectetur ultrices. In tincidunt</p>
+          </div>
+
+          <div class="col-md-3 item-4">
+            <i class="fa fa-usd fa-3x" aria-hidden="true"></i>
+            <h4>Get Quotes and Feedback</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tincidunt consectetur ultrices. In tincidunt</p>
+          </div>
+        </div>
+      </div>
+      <button><%= link_to "Post a Project", new_client_session_path %></button>
+    </div>
+    <div id="hiw-background">
+      <%= image_tag("how-it-work.png", alt: "How It Works") %>
+      <!-- <img src="img/how-it-work.png"> -->
+    </div>
+    
+  </section>
+  <section id="news-letter">
+    <div class="container">
+      <div class="row">
+        <div id="newsletter-info">
+          <h3>Get updates on hardware deals, discounts and special offers</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tincidunt consectetur ultrices. In tincidunt</p>
+
+          <% if cookies[:saved_subscriber] %>
+            Thanks for signing up!
+          <% else %>
+            <%= render 'subscribers/form' %>
+          <% end %>
+
+          <!-- <form action="index.html" method="post" class="subscribe-form">
+            <input type="email" name="email" class="subscribe-input" placeholder="Email address" autofocus>
+            <button type="submit" class="subscribe-submit">Subscribe</button>
+          </form> -->
+        </div>
+      </div>
+    </div>
+  </section>

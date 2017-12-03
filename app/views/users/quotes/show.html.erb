@@ -1,2 +1,47 @@
-<h1>Quotes#show</h1>
+<div class="header">
+    <h1>Review Quote</h1>
+</div>
 
+<div class="quotes quote-listing">
+  <div class="container">
+    <div class="project-details">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 project-description">
+            <div class="description-1">
+              <h3><%= @quote.project.project_title %></h3>
+              <p>Skill Needed: <span>Plumbing | Masonary</span></p>
+              <p><span>Hourly/Fixed</span></p>
+              <p>Start Date: <span>00/00/0000</span></p>
+              <p>Status: <span>Open</span></p>
+            </div>
+            <div class="description-2">
+              <p><%= @quote.project.project_desc %></p>
+              <p>Budget: <span><%= number_to_currency(@quote.project.budget, precision: 0 ) %></span></p>
+              <p>Address: <%= @quote.project.address %> </p>
+            </div> 
+          </div>
+          <div class="col-md-12">
+            <div class="quote-details">
+              <div class="row">
+                <div class="col-md-8">
+                  <p><%=raw @quote.quote_details %></p>
+                </div>
+                <div class="col-md-4">          
+                  <p><%= @quote.start_date %></p>
+                  <p><%= @quote.timeframe %></p>
+                  <p><%= number_to_currency(@quote.total, precision: 0) %></p>
+                  <div class="action-buttons">
+                    <%= link_to 'Edit', edit_users_quote_path(@quote.id) %> | <%= link_to 'Delete', users_quote_path(@quote.id), method: :delete, data: {confirm: 'Are you sure?'} %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

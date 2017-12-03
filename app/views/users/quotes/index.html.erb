@@ -1,31 +1,33 @@
-<h1>Quotes</h1>
-
-<% if @quotes.exists? %>
-	<table>
-		<tr>
-			<th>Quote Details</th>
-			<th>Total</th>
-		</tr>
-
+<div class="header">
+    <h1>Quotes<span> | Quotes Placed: <%= @quotes.count %></h1>
+</div>
+<div class="container">
+	<% if @quotes.exists? %>
 		<% @quotes.each do |quote| %>
-			<% if @project.id == quote.project.id %>
-				<div>
-					<h2><%= quote.project.project_title %></h2>
-					<p><%= quote.project.project_desc %></p>
-					<p><%= quote.project.address %></p>
-					<h3><%= quote.project.budget %></h3>
+			<div class="row quote-info">
+				<div class="col-md-8">
+					<div class="quote-project-details">
+						<h2><%= quote.project.project_title %></h2>
+						<p><%= quote.project.project_desc %></p>
+						<p><%= quote.project.address %></p>
+						<h3><span>Budget:</span> <%= number_to_currency(quote.project.budget, precision: 0 ) %></h3>
+					</div>
 				</div>
-				
-				<tr>
-					<td><%= quote.quote_details %></td>
-					<td><%= quote.total %></td>
-					<td>
-					<%= link_to 'Edit', edit_users_project_quote_path(quote.id, quote.project.id) %> | <%= link_to 'Delete', users_project_quote_path(quote.id, quote.project.id), method: :delete, data: {confirm: 'Are you sure?'} %> | <%= link_to 'Show',users_project_quote_path(quote.id, quote.project.id) %>
-					</td>
-				</tr>
-			<% end %>
+				<div class="col-md-4">
+					<div class="quote-details">
+						<p><%=raw quote.quote_details.truncate(40) %></p>
+						<p><%= number_to_currency(quote.total, precision: 0) %></p>
+						<p><%= quote.start_date %></p>
+						<p><%= quote.timeframe %></p>
+					</div>
+					
+					<div class="action-buttons">
+						<%= link_to 'Edit', edit_users_quote_path(quote.id) %> | <%= link_to 'Delete', users_quote_path(quote.id, quote.project.id), method: :delete, data: {confirm: 'Are you sure?'} %> | <%= link_to 'Review Quote', users_quote_path(quote.id) %>
+					</div>
+				</div>
+			</div>
 		<% end %>
-	</table>
-<% else %>
-  <p>you have no Quotes for review. <%= link_to 'Browse Projects',projects_path %></p>
-<% end %>
+	<% else %>
+		<p>you have no Quotes for review. <%= link_to 'Browse Projects',projects_path %></p>
+	<% end %>
+</div>

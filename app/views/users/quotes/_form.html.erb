@@ -1,32 +1,38 @@
-<h2>Create a Quote</h2>
-
-<%= form_for ([:users, @project, @project.quotes.build]) do |f| %>
+<%= form_for ([:users, @quote]) do |f| %>
 	<!-- Check for errors -->
-	<% if @project.errors.any? %>
-		<% @project.errors.full_messages.each do |msg| %>
+	<% if @quote.errors.any? %>
+		<% @quote.errors.full_messages.each do |msg| %>
 			<!-- Show errors -->
 			<div><%= msg %></div>
 		<% end %>
 	<% end %>
 
-	<div>
-		<%= f.label "Quote Details" %>
-		<%= f.text_area :quote_details, autofocus: true %>
+	<div class="form-row">
+        <div class="form-group col-md-12">
+			<%= f.label "Quote Details" %>
+			<%= f.text_area :quote_details, autofocus: true, class: "form-control ckeditor" %>
+		</div>
 	</div>
 
-	<div>
-		<%= f.label :total %>
-		<%= f.number_field :total, autofocus: true %>
-	</div>
+	<div class="form-row">
+        <div class="form-group col-md-4">
+			<%= f.label :total %>
+			<%= f.number_field :total, autofocus: true, class: "form-control"  %>
+		</div>
 
-	<div>
-		<%= f.label :timeframe %>
-		<%= f.text_field :timeframe, autofocus: true %>
-	</div>
 
-	<div>
-		<%= f.label "Start Date" %>
-		<%= f.number_field  :start_date, autofocus: true %>
+
+        <div class="form-group col-md-4">
+			<%= f.label :timeframe %>
+			<%= f.text_field :timeframe, autofocus: true, class: "form-control"  %>
+		</div>
+
+
+
+        <div class="form-group col-md-4">
+			<%= f.label "Start Date" %>
+			<%= f.text_field  :start_date, autofocus: true, class: "form-control", "data-provide" => "datepicker"  %>
+		</div>
 	</div>
 
 	<br>

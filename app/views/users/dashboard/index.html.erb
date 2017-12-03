@@ -12,7 +12,7 @@
 			
 			<td><%= @user.fname %></td>
 			<td><%= @user.lname %></td>
-			<td> <%= link_to 'Browse Projects', users_project_quotes_path(@user.id) %></td>
+			<td> <%= link_to 'Browse Quotes', users_quotes_path(current_user) %></td>
 
 			<td>
 			<% if current_user %>

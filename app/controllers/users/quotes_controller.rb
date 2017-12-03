@@ -18,13 +18,13 @@ class Users::QuotesController < Users::ApplicationController
 
   def index
     @quotes = current_user.quotes
-    @project = Project.find(params[:project_id])
+    # @project = Project.find(params[:project_id])
     # @project = Project.joins(:quote).where(:quotes => {:project_id => @quote.id})
      @projects = Project.all
   end
 
   def show
-    @quote = Quote.find(params[:project_id])
+    @quote = Quote.find(params[:id])
   end
 
   def edit
@@ -36,7 +36,7 @@ class Users::QuotesController < Users::ApplicationController
 
     if @quote.update(quote_params)
       flash[:notice] = 'Quote Updated'
-      redirect_to users_project_quotes_path 
+      redirect_to users_quotes_path(id: current_user) 
     else
       render 'edit'
     end
@@ -49,7 +49,7 @@ class Users::QuotesController < Users::ApplicationController
 
     flash[:notice] = 'quote Removed'
 
-    redirect_to projects_path
+    redirect_to users_quotes_path
   end
 
   private

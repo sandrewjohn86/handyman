@@ -1,13 +1,80 @@
-<h1>Projects#show</h1>
-<p>Find me in app/views/projects/show.html.erb</p>
+  <div class="header">
+    <h1>Projects</h1>
+  </div>
 
-<div>
-	<h2><%= @project.project_title %></h2>
-	<p><%= @project.project_desc %></p>
-	<p><%= @project.address %></p>
-	<h3><%= @project.budget %></h3>
-</div>
+  
+  <section id="user-search">
+    <div id="heading">
+      <div class="heading-left">
 
-<%= render @project.quotes %>
+      </div>
+      <div class="heading-right">
+        <button type="button" class="btn btn-primary"><i class="fa fa-filter" aria-hidden="true"></i><span>Filter</span></button>
+        <button type="button" class="btn btn-primary">Browse Pros</button>
+      </div>
+    </div>
+    <div class="projects project-listing">
+      <div class="container">
+        <div class="project-info">
+          <div class="container">
+            <div class="project-details">
+              <div class="project-heading-infor">
+                <h3><%= @project.project_title %></h3>
+                <p>Skill Needed: <span>Plumbing | Masonary</span></p>
+                <p>Start Date: <span>00/00/0000</span></p>
+                <p>Posted: <span><%= time_ago_in_words(@project.created_at) %> ago</span></p>
+              </div>
 
-<%= render "quotes/form" %>
+              <div class="row">
+                <div class="col-md-9">
+                  <div class="project-description-detail">
+                    <p><%= @project.project_desc %></p>
+
+                    <p>Project type: <span>Hourly/Fixed</span></p>
+                    <i class="fa fa-map-marker" aria-hidden="true"></i><span><%= @project.address %></span>
+                  </div> 
+                  <div class="quote-form" id="quote-form">
+                  	<%= render "quotes/form" %>
+                  </div>
+                  <div class="toggle-text">
+                  	<% if @project.has_quote_from? current_user %>
+                  		<p>You already created a quote for this job.</p>
+                  		<button><%= link_to "Edit Quote", edit_users_quote_path(current_user) %></button>
+                  		<button><%= link_to "More Projects", projects_path %></button>
+                  	<% else %>
+                  		<a onclick="myFunction()">Create a Quote</a><br>
+                  		<i class="fa fa-angle-double-down" aria-hidden = "true"></i>
+                  		
+                  	<% end %>
+                  </div>
+                </div>  
+
+                <div class=" col-md-3 project-summary">
+                  <p><span>Open</span><br>Status</p>
+                  <% if @project.budget %>
+                  	<p><span><%= number_to_currency(@project.budget, precision: 0 ) %></span><br>Budget</p>
+                  <% else %>
+                  	<p><span style="font-size: 16px;">Not Specified</span><br>Budget</p>
+                  <% end %>
+                  <hr>
+                  <p><span><%= @project.quotes.count %></span><br>Quotes received</p>
+                  <p><span><%= number_to_currency(@average, precision: 0) %> </span><br>Average Quote</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type="text/javascript">
+    function myFunction() {
+        var x = document.getElementById("quote-form");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+  </script>

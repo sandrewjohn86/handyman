@@ -7,11 +7,16 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
+    # @project = Project.find(params[:id => :project_id])
+    # @quotes = @project.quotes
   end
 
   def show
     @project = Project.find(params[:id])
     @quote = Quote.new
+    @average = Quote.average(:total)
+
+     @quotes = Quote.all
     # @quotes = Quote.all
     # @quote = @project.quotes.includes(:user)
     # @quote = current_user.quotes

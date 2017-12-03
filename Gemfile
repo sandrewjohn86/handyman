@@ -12,7 +12,7 @@ gem 'rails', '~> 5.0.6'
 # gem 'sqlite3'
 gem 'mysql2'
 gem 'devise'
-gem 'rails_admin', '~> 1.2'
+gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -34,6 +34,14 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
+gem 'bootstrap-sass', '~> 3.3.7'
+gem 'autoprefixer-rails'
+gem 'mail_form'
+gem 'simple_form'
+
+gem 'ckeditor_rails'
+gem 'bootstrap-datepicker-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -1,71 +1,29 @@
 Rails.application.routes.draw do
 
+  get 'how_it_works', :to => 'how_it_works#index'
+
+  resources :subscribers, :only => [:index, :create, :new]
+
+  get 'contactus', :to => 'contacts#new'
+
+   get 'signup', :to => 'signup#index'
+
+
+  get 'faq', :to => 'faq#index'
+
+  get 'blogs', :to => 'blogs#index'
+
+  get 'about', :to => 'about#index'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  
   namespace :users do
-    get 'dashboard/index'
+    get 'dashboard', :to => 'dashboard#index'
   end
 
   namespace :clients do
-    get 'dashboard/index'
+    get 'dashboard', :to => 'dashboard#index'
   end
-
-  # get 'index/show'
-
-  # get 'index/edit'
-
-  # get 'index/update'
-
-  # get 'index/destroy'
-
-  # get 'index/create'
-
-  # get 'index/new'
-
-  # get 'quotes/new'
-
-  # get 'quotes/create'
-
-  # get 'quotes/update'
-
-  # get 'quotes/edit'
-
-  # get 'quotes/destroy'
-
-  # get 'quotes/index'
-
-  # get 'quotes/show'
-
-  # get 'users/index'
-
-  # get 'users/show'
-
-  # get 'directories/new'
-
-  # get 'directories/create'
-
-  # get 'directories/edit'
-
-  # get 'directories/update'
-
-  # get 'directories/destroy'
-
-  # get 'directories/index'
-
-  # get 'directories/show'
-
-  # get 'skills/new'
-
-  # get 'skills/create'
-
-  # get 'skills/edit'
-
-  # get 'skills/update'
-
-  # get 'skills/destroy'
-
-  # get 'skills/index'
-
-  # get 'skills/show'
 
   devise_for :users, controllers: {
     #confirmations: 'users/confirmations',
@@ -83,12 +41,16 @@ Rails.application.routes.draw do
     get 'register' => 'users/registrations#new'
   end
 
-  resources :users, only: [:index, :show] 
+ 
+
+  # namespace :users do
+  #   resources :projects do
+  #     resources :quotes, :only => [:new, :create, :index, :show, :destroy, :edit, :update]
+  #   end
+  # end
 
   namespace :users do
-    resources :projects do
-      resources :quotes, :only => [:new, :create, :index, :show, :destroy, :edit, :update]
-    end
+    resources :quotes, only: [:new, :create, :index, :show, :destroy, :edit, :update]
   end
   
   namespace :users do
@@ -162,6 +124,8 @@ Rails.application.routes.draw do
   resources :skills
 
   resources :projects, :only => [:index, :show]
+
+  resources :users, only: [:index, :show] 
 
   # resources :projects do
   #   resources :quotes

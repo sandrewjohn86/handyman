@@ -1,4 +1,57 @@
 <% if @projects.exists? %>
+  <div class="header">
+    <h1>Projects</h1>
+  </div>
+
+  <section id="user-search">
+    <div id="heading">
+      <div class="heading-left">
+
+      </div>
+      <div class="heading-right">
+        <button type="button" class="btn btn-primary"><i class="fa fa-filter" aria-hidden="true"></i><span>Filter</span></button>
+       <!--  <button type="button" class="btn btn-primary">Browse Pros</button> -->
+      </div>
+    </div>
+
+    <div class="projects project-listing">
+      <div class="container">
+
+      	<% @projects.each do |project| %>
+        <div class="project-details">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 project-description">
+                <div class="description-1">
+                  <h3><%= project.project_title %></h3>
+
+                  <p>Skill Needed: <span>Plumbing | Masonary</span></p>
+                  <p><span>Hourly/Fixed</span></p>
+                  <p>Start Date: <span>00/00/0000</span></p>
+                  <p>Posted: <span><%= time_ago_in_words(project.created_at) %> ago</span></p>
+                  <p>Status: <span>Open<span></p>
+                </div>
+                <div class="description-2">
+                  <p><%= project.project_desc %></p>
+                  <p>Quotes: <span><%= project.quotes.count %></span></p>
+                  <p>Budget: <span><%= number_to_currency(project.budget, precision: 0 ) %></span></p>
+                  <i class="fa fa-map-marker" aria-hidden="true"></i><%= project.address %>
+                </div> 
+              </div>
+              <div class=" col-md-4 action-button">
+                <button><%= link_to "Review Details", project_path(id: project.id) %></button></div>
+            </div>
+          </div>
+        </div>
+        <% end %> 
+      </div>
+    </div>
+  </section>
+
+
+
+
+<!-- ======================================================= -->
 	<table>
 		<tr>
 			<th>Project Name</th>

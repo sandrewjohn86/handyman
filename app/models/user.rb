@@ -12,4 +12,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+   # def project_quote(project)
+   # 	Quote.find_by(user_id: self, project_id: project)
+   # end
 end

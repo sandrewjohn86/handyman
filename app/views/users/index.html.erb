@@ -16,7 +16,7 @@
 				<td><%= user.lname %></td>
 
 				<td>
-				
+					<% if current_client %>
 					<div class = "dropdown">
 						<button class="dropbtn">Add to directory</button>
 						<div class="dropdown-content">
@@ -25,6 +25,7 @@
 							<% end %>
 						</div>	
 					</div>
+					<% end %>
 				</td>
 			</tr>
 		<% end %>		
